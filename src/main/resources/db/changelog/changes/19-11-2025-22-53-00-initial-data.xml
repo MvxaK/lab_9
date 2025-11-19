@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="insert-countries" author="CrystaliK">
+        <insert tableName="countries">
+            <column name="name" value="Kazakhstan"/>
+            <column name="code" value="KZ"/>
+        </insert>
+        <insert tableName="countries">
+            <column name="name" value="Russia"/>
+            <column name="code" value="RU"/>
+        </insert>
+        <insert tableName="countries">
+            <column name="name" value="United States of America"/>
+            <column name="code" value="USA"/>
+        </insert>
+    </changeSet>
+
+
+    <changeSet id="insert-items" author="CrystaliK">
+        <insert tableName="items">
+            <column name="name" value="KeyBoard AJAZZ ak820 pro"/>
+            <column name="price" value="25000"/>
+            <column name="quantity" value="67"/>
+            <column name="manufacturer_id" value="3"/>
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Mouse Razer Cobra"/>
+            <column name="price" value="25000"/>
+            <column name="quantity" value="99"/>
+            <column name="manufacturer_id" value="2"/>
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Amir Kamalov"/>
+            <column name="price" value="1"/>
+            <column name="quantity" value="1"/>
+            <column name="manufacturer_id" value="1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
