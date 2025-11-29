@@ -8,7 +8,7 @@ import org.cook.lab9.mapper.ItemMapper;
 import org.cook.lab9.model.Item;
 import org.cook.lab9.repository.CountryRepository;
 import org.cook.lab9.repository.ItemRepository;
-import org.cook.lab9.service.ItemService;
+import org.cook.lab9.service.interfaces.ItemService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -77,4 +77,5 @@ public class ItemServiceImpl implements ItemService {
 
         itemRepository.deleteById(id);
     }
+
 }

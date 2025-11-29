@@ -3,10 +3,12 @@ package org.cook.lab9.service.impl;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.cook.lab9.entity.CountryEntity;
+import org.cook.lab9.entity.ItemEntity;
 import org.cook.lab9.mapper.CountryMapper;
 import org.cook.lab9.model.Country;
 import org.cook.lab9.repository.CountryRepository;
-import org.cook.lab9.service.CountryService;
+import org.cook.lab9.repository.ItemRepository;
+import org.cook.lab9.service.interfaces.CountryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
 public class CountryServiceImpl implements CountryService {
 
     private final CountryRepository countryRepository;
+    private final ItemRepository itemRepository;
     private final CountryMapper countryMapper;
 
     @Override
@@ -55,6 +58,11 @@ public class CountryServiceImpl implements CountryService {
             throw new EntityNotFoundException("There is no country with id -> " + id);
         }
 
+        List<ItemEntity> items = itemRepository.findAllByManufacturerId(id);
+        items.forEach(item -> item.setManufacturer(null));
+        itemRepository.saveAll(items);
+
         countryRepository.deleteById(id);
     }
+
 }

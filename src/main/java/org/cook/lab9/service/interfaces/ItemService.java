@@ -1,4 +1,4 @@
-package org.cook.lab9.service;
+package org.cook.lab9.service.interfaces;
 
 import org.cook.lab9.model.Item;
 import org.springframework.stereotype.Service;

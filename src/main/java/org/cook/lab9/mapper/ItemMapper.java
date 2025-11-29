@@ -12,6 +12,7 @@ public interface ItemMapper {
     Item toModel(ItemEntity entity);
 
     @Mapping(target = "manufacturer", ignore = true)
+    @Mapping(target = "id", ignore = true)
     ItemEntity toEntity(Item model);
 
 }
