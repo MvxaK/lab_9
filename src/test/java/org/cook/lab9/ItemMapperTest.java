@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
@@ -49,6 +52,40 @@ public class ItemMapperTest {
         assertEquals(entity.getPrice(), model.getPrice(), "Prices should be equal");
         assertEquals(entity.getQuantity(), model.getQuantity(), "Quantities should be equal");
         assertEquals(entity.getManufacturer().getId(), model.getManufacturerId(), "Manufacturer Id should be equal");
+    }
+
+    @Test
+    void shouldReturnModelList(){
+        CountryEntity countryEntity1 = new CountryEntity(234L, "Italy", "ITA");
+        CountryEntity countryEntity2 = new CountryEntity(235L, "Belgium", "BLG");
+
+        ItemEntity itemEntity1 = new ItemEntity(123L, "Item1", 123000, 123, countryEntity1);
+        ItemEntity itemEntity2 = new ItemEntity(124L, "Item2", 124000, 124, countryEntity2);
+
+        List<ItemEntity> entities = new ArrayList<>();
+        entities.add(itemEntity1);
+        entities.add(itemEntity2);
+
+        List<Item> modelList = itemMapper.toModelList(entities);
+
+        assertNotNull(modelList);
+        assertEquals(2, modelList.size());
+
+        Item checkItem = modelList.get(0);
+
+        assertEquals(checkItem.getName(), itemEntity1.getName());
+        assertEquals(checkItem.getPrice(), itemEntity1.getPrice());
+        assertEquals(checkItem.getQuantity(), itemEntity1.getQuantity());
+        assertEquals(checkItem.getManufacturerId(), itemEntity1.getManufacturer().getId());
+
+        for (Item item: modelList){
+            assertNotNull(item.getId());
+            assertNotNull(item.getName());
+            assertNotNull(item.getPrice());
+            assertNotNull(item.getQuantity());
+            assertNotNull(item.getManufacturerId());
+            assertNotNull(item.getManufacturerId());
+        }
     }
 
 }

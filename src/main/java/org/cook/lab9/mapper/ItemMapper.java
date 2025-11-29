@@ -5,6 +5,8 @@ import org.cook.lab9.model.Item;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface ItemMapper {
 
@@ -15,4 +17,5 @@ public interface ItemMapper {
     @Mapping(target = "id", ignore = true)
     ItemEntity toEntity(Item model);
 
+    List<Item> toModelList(List<ItemEntity> entities);
 }
