@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,6 +20,19 @@ public class ItemServiceTest {
 
     @Autowired
     private ItemService itemService;
+
+    @Test
+    void shouldReturnItemList(){
+        List<Item> items = itemService.getAllItems();
+
+        for(Item item: items){
+            assertNotNull(item);
+            assertNotNull(item.getName());
+            assertNotNull(item.getPrice());
+            assertNotNull(item.getQuantity());
+            assertNotNull(item.getManufacturerId());
+        }
+    }
 
     @Test
     void shouldReturnItmById(){

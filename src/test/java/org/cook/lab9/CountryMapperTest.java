@@ -3,6 +3,7 @@ package org.cook.lab9;
 import org.cook.lab9.entity.CountryEntity;
 import org.cook.lab9.mapper.CountryMapper;
 import org.cook.lab9.model.Country;
+import org.cook.lab9.model.Item;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,12 @@ public class CountryMapperTest {
 
         assertEquals(entity1.getName(), model1.getName(), "Names should be equal");
         assertEquals(entity1.getCode(), model1.getCode(), "Codes should be equal");
+
+        for (Country country: modelList){
+            assertNotNull(country.getId());
+            assertNotNull(country.getName());
+            assertNotNull(country.getCode());
+        }
     }
 
 }
